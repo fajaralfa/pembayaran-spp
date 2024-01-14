@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Petugas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Pembayaran SPP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="siswa.php">Data Siswa</a>
-                    <a class="nav-link" href="kelas.php">Data Kelas</a>
-                    <a class="nav-link" href="petugas.php">Data Petugas</a>
-                    <a class="nav-link" href="spp.php">Data SPP</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<?php
+$title = 'Data Petugas';
+require_once '../layout/header.php';
+?>
 
     <?php
     require_once '../helper/db.php';
@@ -60,7 +36,7 @@
                             <td><?= $petugas['nama_petugas'] ?></td>
                             <td><?= $petugas['level'] ?></td>
                             <td class="d-flex justify-content-center gap-2">
-                                <a onclick="return confirm('Hapus data petugas ini?')" href="hapus?id_petugas=<?= $petugas['id_petugas'] ?>" class="btn btn-danger">Hapus</a>
+                                <a onclick="return confirm('Hapus data petugas ini?')" href="hapus.php?id_petugas=<?= $petugas['id_petugas'] ?>" class="btn btn-danger">Hapus</a>
                                 <form action="ubah.php">
                                     <input type="hidden" name="id_petugas" value="<?= $petugas['id_petugas'] ?>">
                                     <input type="hidden" name="username" value="<?= $petugas['username'] ?>">
@@ -76,6 +52,5 @@
             </table>
         </div>
     </div>
-</body>
 
-</html>
+<?php require_once '../layout/footer.php' ?>

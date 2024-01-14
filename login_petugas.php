@@ -20,11 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['spp_petugas'] = $user['username'];
         $_SESSION['spp_level_petugas'] = $user['level'];
 
-        if ($user['level'] == 'admin') {
-            header('location: admin/');
-        } elseif ($user['level'] == 'petugas') {
-            header('location: petugas/');
-        }
+        header('location: index.php');
     } else {
         /* skenario jika username atau password salah */
         // tampilkan pesan 'username atau password salah' melalui session (belum)
@@ -51,13 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="row justify-content-center align-items-center" style="height: 550px;">
             <form action="" method="post" class="w-25">
                 <div>
-                    <?php
-                    if (isset($_SESSION['flash'])) {
-                        $message = $_SESSION['flash'];
-                        unset($_SESSION['flash']);
-                        echo $message;
-                    }
-                    ?>
+                <?= $session->get_flash() ?>
                 </div>
                 <h1 class="text-center">Login Petugas</h1>
                 <div class="mb-3">

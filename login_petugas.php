@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user != null) {
         /* skenario jika username dan password sesuai */
         // simpan data user yang sudah login
-        $_SESSION['spp_petugas'] = $user['username'];
+        $_SESSION['spp_petugas'] = $user['id_petugas'];
+        $_SESSION['spp_nama_petugas'] = $user['nama_petugas'];
         $_SESSION['spp_level_petugas'] = $user['level'];
 
         header('location: index.php');

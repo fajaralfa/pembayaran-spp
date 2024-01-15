@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = 'Data Siswa';
 require_once '../layout/header.php';
 ?>

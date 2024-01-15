@@ -21,3 +21,15 @@ CREATE TABLE spp (
   tahun YEAR NOT NULL,
   nominal INTEGER
 );
+
+CREATE TABLE siswa (
+  nisn CHAR(10) NOT NULL PRIMARY KEY,
+  nis CHAR(8) NOT NULL,
+  nama VARCHAR(35) NOT NULL,
+  id_kelas INTEGER NOT NULL,
+  alamat TEXT NOT NULL,
+  no_telp VARCHAR(13) NOT NULL,
+  id_spp INTEGER NOT NULL,
+  FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas),
+  FOREIGN KEY (id_spp) REFERENCES spp(id_spp)
+);

@@ -32,7 +32,7 @@ $data_kelas = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <td><?= $kelas['nama_kelas'] ?></td>
                         <td><?= $kelas['kompetensi_keahlian'] ?></td>
                         <td class="text-center">
-                            <a onclick="return confirm('Anda ingin menghapus sekolah ini?')" href="hapus.php?id_kelas=<?= $kelas['id_kelas'] ?>" class="btn btn-danger">Hapus</a>
+                            <a onclick="return confirm('Anda ingin menghapus data kelas ini?')" href="hapus.php?id_kelas=<?= $kelas['id_kelas'] ?>" class="btn btn-danger">Hapus</a>
                             <a href="ubah.php?id_kelas=<?= $kelas['id_kelas'] ?>" class="btn btn-primary">Ubah</a>
                         </td>
                     </tr>

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php
-$title = 'Data Petugas';
+$title = 'Tambah Data Petugas';
 require_once '../layout/header.php';
 ?>
 

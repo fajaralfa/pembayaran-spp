@@ -37,14 +37,7 @@ require_once '../layout/header.php';
                             <td><?= $petugas['level'] ?></td>
                             <td class="d-flex justify-content-center gap-2">
                                 <a onclick="return confirm('Hapus data petugas ini?')" href="hapus.php?id_petugas=<?= $petugas['id_petugas'] ?>" class="btn btn-danger">Hapus</a>
-                                <form action="ubah.php">
-                                    <input type="hidden" name="id_petugas" value="<?= $petugas['id_petugas'] ?>">
-                                    <input type="hidden" name="username" value="<?= $petugas['username'] ?>">
-                                    <input type="hidden" name="password" value="<?= $petugas['password'] ?>">
-                                    <input type="hidden" name="nama_petugas" value="<?= $petugas['nama_petugas'] ?>">
-                                    <input type="hidden" name="level" value="<?= $petugas['level'] ?>">
-                                    <button type="submit" class="btn btn-primary">Ubah</button>
-                                </form>
+                                <a href="ubah.php?id_petugas=<?= $petugas['id_petugas'] ?>" class="btn btn-primary">Ubah</a>
                             </td>
                         </tr>
                         <?php } ?>

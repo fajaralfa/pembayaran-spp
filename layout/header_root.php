@@ -13,16 +13,16 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pembayaran SPP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="siswa/">Data Siswa</a>
-                    <a class="nav-link" href="kelas/">Data Kelas</a>
-                    <a class="nav-link" href="petugas/">Data Petugas</a>
-                    <a class="nav-link" href="spp/">Data SPP</a>
-                </div>
-            </div>
+            <a onclick="return confirm('Anda ingin keluar?')" href="../logout.php" class="btn">Logout</a>
         </div>
     </nav>
+    <div class="sidenav position-fixed z-1 overflow-x-hidden my-3 p-3" style="width: 180px; left: 10px; background: #eef;">
+        <div class="navbar-nav">
+            <a class="nav-link" href="siswa/">Data Siswa</a>
+            <a class="nav-link" href="kelas/">Data Kelas</a>
+            <a class="nav-link" href="petugas/">Data Petugas</a>
+            <a class="nav-link" href="spp/">Data SPP</a>
+        </div>
+    </div>
+
+    <div class="my-3" style="margin-left: 200px;">

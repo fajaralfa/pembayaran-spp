@@ -1,5 +1,7 @@
 CREATE DATABASE ukk_fajar_xiirpl2;
+
 USE ukk_fajar_xiirpl2;
+
 CREATE TABLE petugas (
   id_petugas INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(25) NOT NULL UNIQUE,

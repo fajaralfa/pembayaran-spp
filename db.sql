@@ -33,3 +33,17 @@ CREATE TABLE siswa (
   FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas),
   FOREIGN KEY (id_spp) REFERENCES spp(id_spp)
 );
+
+INSERT INTO petugas (username, password, nama_petugas, level) VALUES
+('admin', 'admin', 'Admiin', 'admin'),
+('fajar', 'rahasia', 'Fajar Ilham Alfarizi', 'petugas');
+
+INSERT INTO kelas (nama_kelas, kompetensi_keahlian) VALUES
+('XII RPL 2', 'REKAYASA PERANGKAT LUNAK'),
+('XII OTKP 4', 'OTOMATISASI DAN TATA KELOLA PERKANTORAN');
+
+INSERT INTO spp (tahun, nominal) VALUES
+(2023, 10000), (2024, 20000);
+
+INSERT INTO siswa VALUES
+('10292938', '10216663', 'Fajar Ilham', 1, 'KP BURUJUL', '0882254858', 1);

@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 550px;">
-            <form action="" method="post" class="w-25">
+            <form action="" method="post" style="width: 20rem;">
                 <div>
                 <?= $session->get_flash() ?>
                 </div>

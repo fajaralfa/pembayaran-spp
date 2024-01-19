@@ -3,6 +3,8 @@
 require_once '../helper/db.php';
 require_once '../helper/session.php';
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama_kelas = $_POST['nama_kelas'];
     $kompetensi_keahlian = $_POST['kompetensi_keahlian'];

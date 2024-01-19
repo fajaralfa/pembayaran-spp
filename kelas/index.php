@@ -12,7 +12,7 @@ $result = mysqli_query($db, $sql);
 $data_kelas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
-<div class="card" style="width: 650px;">
+<div class="card" style="width: 70%;">
     <div class="card-header">
         <a href="tambah.php" class="btn btn-primary">Tambah Kelas</a>
     </div>

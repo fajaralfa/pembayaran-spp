@@ -34,6 +34,18 @@ CREATE TABLE siswa (
   FOREIGN KEY (id_spp) REFERENCES spp(id_spp)
 );
 
+CREATE TABLE pembayaran (
+  id_pembayaran INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id_petugas INTEGER NOT NULL,
+  nisn CHAR(10) NOT NULL,
+  tgl_bayar DATE,
+  id_spp INTEGER NOT NULL,
+  jumlah_bayar INTEGER NOT NULL,
+  FOREIGN KEY (id_petugas) REFERENCES petugas(id_petugas),
+  FOREIGN KEY (nisn) REFERENCES siswa(nisn),
+  FOREIGN KEY (id_spp) REFERENCES spp(id_spp)
+);
+
 INSERT INTO petugas (username, password, nama_petugas, level) VALUES
 ('admin', 'admin', 'Admiin', 'admin'),
 ('fajar', 'rahasia', 'Fajar Ilham Alfarizi', 'petugas');

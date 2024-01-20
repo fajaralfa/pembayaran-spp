@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <a class="navbar-brand" href="./">Pembayaran SPP</a>
             <div class="d-flex align-items-center lead">
@@ -22,10 +22,12 @@
     <div class="sidenav position-fixed z-1 overflow-x-hidden my-3 p-3" style="width: 180px; left: 10px; background: #eef;">
         <div class="navbar-nav">
             <a class="nav-link" href="pembayaran/pilih_siswa.php">Pembayaran</a>
+            <?php if ($_SESSION['spp_level_petugas'] == 'admin') { ?>
             <a class="nav-link" href="siswa/">Data Siswa</a>
             <a class="nav-link" href="spp/">Data SPP</a>
             <a class="nav-link" href="kelas/">Data Kelas</a>
             <a class="nav-link" href="petugas/">Data Petugas</a>
+            <?php } ?>
         </div>
     </div>
 

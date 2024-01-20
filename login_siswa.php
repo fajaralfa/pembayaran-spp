@@ -5,28 +5,24 @@ require_once 'helper/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ambil data dari form
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $nisn = $_POST['nisn'];
+    $nis = $_POST['nis'];
 
     // ambil data dari database
-    $sql = "SELECT * FROM petugas WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM siswa WHERE nisn = '$nisn' AND nis = '$nis'";
     $result = mysqli_query($db, $sql);
     $user = mysqli_fetch_assoc($result);
 
     // bandingkan data dari form dengan data
     if ($user != null) {
-        /* skenario jika username dan password sesuai */
         // simpan data user yang sudah login
-        $_SESSION['spp_petugas'] = $user['id_petugas'];
-        $_SESSION['spp_nama_petugas'] = $user['nama_petugas'];
-        $_SESSION['spp_level_petugas'] = $user['level'];
+        $_SESSION['spp_nisn_siswa'] = $user['nisn'];
+        $_SESSION['spp_nama_siswa'] = $user['nama'];
 
-        header('location: index.php');
+        header('location: pembayaran/riwayat_siswa.php');
     } else {
-        /* skenario jika username atau password salah */
-        // tampilkan pesan 'username atau password salah' melalui session (belum)
-        $session->flash('Username atau password salah!');
-        header('location: login_petugas.php');
+        $session->flash('NISN atau NIS salah!');
+        header('location: login_siswa.php');
     }
 
     // jangan menampilkan apapun lagi
@@ -39,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Petugas</title>
+    <title>Login Siswa</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 
@@ -50,19 +46,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div>
                 <?= $session->get_flash() ?>
                 </div>
-                <h1 class="text-center">Login Petugas</h1>
+                <h1 class="text-center">Login Siswa</h1>
                 <div class="mb-3">
-                    <label for="username" class="form-label">username</label>
-                    <input type="text" name="username" class="form-control" id="">
+                    <label for="nisn" class="form-label">NISN</label>
+                    <input type="text" name="nisn" class="form-control" id="">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">password</label>
-                    <input type="password" name="password" class="form-control" id="">
+                    <label for="nis" class="form-label">NIS</label>
+                    <input type="text" name="nis" class="form-control" id="">
                 </div>
-                <div>
+                <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
-                <a href="login_siswa.php">Login sebagai siswa</a>
+                <a href="login_petugas.php">Login sebagai petugas</a>
             </form>
         </div>
     </div>

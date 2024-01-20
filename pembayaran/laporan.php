@@ -1,22 +1,21 @@
 <?php
-session_start();
-$title = 'Entri Pembayaran';
-require_once '../layout/header.php';
-?>
-
-<?php
 require_once '../helper/db.php';
 
 $nisn = $_GET['nisn'];
+
+$sql = "SELECT nama, nama_kelas FROM siswa, kelas WHERE nisn = $nisn AND siswa.id_kelas = kelas.id_kelas";
+$result = mysqli_query($db, $sql);
+$siswa = mysqli_fetch_assoc($result);
+
 $sql = "SELECT * FROM pembayaran, spp, petugas, siswa, kelas WHERE pembayaran.nisn = '$nisn' AND siswa.id_kelas = kelas.id_kelas AND pembayaran.nisn = siswa.nisn AND pembayaran.id_spp = spp.id_spp AND pembayaran.id_petugas = petugas.id_petugas";
 $result = mysqli_query($db, $sql);
 $data_pembayaran = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+header('content-type: application/vnd.ms-excel');
+header("content-disposition: attachment; filename=\"Laporan SPP $siswa[nama] $siswa[nama_kelas].xls\"");
 ?>
 
 <div class="card" style="width: 95%;">
-    <div class="card-header">
-        <a href="<?= "laporan.php?nisn=$nisn" ?>" class="btn btn-info">Unduh Laporan</a>
-    </div>
     <div class="card-body">
         <table class="table">
             <thead>
@@ -29,7 +28,6 @@ $data_pembayaran = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <th>JUMLAH BAYAR</th>
                     <th>TANGGAL BAYAR</th>
                     <th>PETUGAS</th>
-                    <th class="text-center">AKSI</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,9 +41,6 @@ $data_pembayaran = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <td><?= $data['jumlah_bayar'] ?></td>
                         <td><?= $data['tgl_bayar'] ?></td>
                         <td><?= $data['nama_petugas'] ?></td>
-                        <td class="text-center">
-                            <a href="hapus.php?id_pembayaran=<?= $data['id_pembayaran'] ?>" class="btn btn-danger">Hapus</a>
-                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -53,5 +48,3 @@ $data_pembayaran = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </div>
 </div>
 
-
-<?php require_once '../layout/footer.php' ?>

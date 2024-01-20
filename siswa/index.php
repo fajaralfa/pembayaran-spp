@@ -7,7 +7,7 @@ require_once '../layout/header.php';
 <?php
 require_once '../helper/db.php';
 
-$sql = "SELECT * FROM siswa";
+$sql = "SELECT * FROM siswa, kelas, spp WHERE siswa.id_kelas = kelas.id_kelas AND siswa.id_spp = spp.id_spp";
 $result = mysqli_query($db, $sql);
 $data_siswa = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -23,10 +23,10 @@ $data_siswa = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <th>NISN</th>
                     <th>NIS</th>
                     <th>NAMA</th>
-                    <th>ID KELAS</th>
+                    <th>KELAS</th>
                     <th>ALAMAT</th>
                     <th>NO TELPON</th>
-                    <th>ID SPP</th>
+                    <th>SPP</th>
                     <th class="text-center">AKSI</th>
                 </tr>
             </thead>
@@ -36,10 +36,10 @@ $data_siswa = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <td><?= $siswa['nisn'] ?></td>
                         <td><?= $siswa['nis'] ?></td>
                         <td><?= $siswa['nama'] ?></td>
-                        <td><?= $siswa['id_kelas'] ?></td>
+                        <td><?= $siswa['nama_kelas'] ?></td>
                         <td><?= $siswa['alamat'] ?></td>
                         <td><?= $siswa['no_telp'] ?></td>
-                        <td><?= $siswa['id_spp'] ?></td>
+                        <td><?= $siswa['tahun'] ?></td>
                         <td class="text-center">
                             <a onclick="return confirm('Anda ingin menghapus data siswa ini?')" href="hapus.php?nisn=<?= $siswa['nisn'] ?>" class="btn btn-danger">Hapus</a>
                             <a href="ubah.php?nisn=<?= $siswa['nisn'] ?>" class="btn btn-primary">Ubah</a>

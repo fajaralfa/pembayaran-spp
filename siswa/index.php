@@ -7,14 +7,27 @@ require_once '../layout/header.php';
 <?php
 require_once '../helper/db.php';
 
-$sql = "SELECT * FROM siswa, kelas, spp WHERE siswa.id_kelas = kelas.id_kelas AND siswa.id_spp = spp.id_spp";
+$sql = '';
+if(isset($_GET['nama'])) {
+    $sql = "SELECT * FROM siswa, kelas, spp WHERE siswa.id_kelas = kelas.id_kelas AND siswa.id_spp = spp.id_spp
+        AND nama LIKE '%$_GET[nama]%'";
+} else {
+    $sql = "SELECT * FROM siswa, kelas, spp WHERE siswa.id_kelas = kelas.id_kelas AND siswa.id_spp = spp.id_spp";
+}
+
 $result = mysqli_query($db, $sql);
 $data_siswa = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <div class="card" style="width: 95%;">
     <div class="card-header">
-        <a href="tambah.php" class="btn btn-primary">Tambah Siswa</a>
+        <div class="d-flex align-items-center gap-5">
+            <a href="tambah.php" class="btn btn-primary">Tambah Siswa</a>
+            <form action="" class="d-flex gap-2">
+                <input name="nama" placeholder="Nama siswa" class="form-control">
+                <button type="submit" class="btn btn-warning">Cari</button>
+            </form>
+        </div>
     </div>
     <div class="card-body">
         <table class="table">

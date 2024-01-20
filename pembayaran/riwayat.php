@@ -1,6 +1,6 @@
 <?php
 session_start();
-$title = 'Entri Pembayaran';
+$title = 'Riwayat Pembayaran';
 require_once '../layout/header.php';
 ?>
 
